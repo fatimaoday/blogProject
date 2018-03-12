@@ -22,7 +22,7 @@ var feedback = mongoose.model('feedback', {
     checked:Boolean
 });
 var checkPssword={password:"", result:false}
-var password="codelab"
+var password="hello world"
 
 router.post('/managementApi', function(req, res) {
     checkPssword= req.param('password');
