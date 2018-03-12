@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+
+
+    <link rel="icon" href="\images\icon.png"/>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <title>Admin's Control Panel</title>
+</head>
+
+<body class="homeBackground">
+<!--top corner div-->
+<div id="topcorner"></div>
+
+<!--root divider-->
+<div id="root">
+
+    <!------------------------------------------------------ container ------------------------------------------------------>
+    <div class="container mt">
+        <div class="row">
+            <div class="col-12">
+                <h1 class="atricleTitle">Admin's Control Panel</h1>
+            </div>
+
+            <!------------------Articles--------------->
+            <div class="col-md-6 col-12">
+                <div class="card mt mainContentsBg mb-3">
+                    <div class="card-body">
+                        <h1 class="atricleTitle">articles</h1>
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th class="qoutFont">Name</th>
+                                <th class="qoutFont">Category</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr v-for="article in articles">
+                                <td class="articleText">{{article.title}}</td>
+                                <td class="articleText">{{article.category}}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+            <!------------------Statistics--------------->
+            <div class="col-md-6 col-12">
+                <div class="card mt mainContentsBg mb-3">
+                    <div class="card-body">
+                        <h1 class="atricleTitle">Statistics</h1>
+                        <hr>
+                        <canvas id="pieChart"></canvas>
+                        <br>
+                        <button @click="showStatistics()" class="btn indexButton">show statistics</button>
+                    </div>
+                </div>
+            </div>
+            <!------------------Feedbacks--------------->
+            <div class="col-md-12 col-12">
+                <div class="card mt mainContentsBg mb-3">
+                    <div class="card-body mr-3">
+                        <div class="row">
+                            <div class="col">
+                                <h1 class="atricleTitle">Feedbacks</h1>
+                            </div>
+                        </div>
+                        <div class="row justify-content-start" >
+                            <div class="col-md-6 col-12 my-3" v-for="feedback in feedbacks" v-if="feedback.checked==false">
+                                <div class="card articleText" style="width: 100%;">
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item"><p class="bold">Name</p>{{feedback.name}}</li>
+                                        <li class="list-group-item"><p class="bold">E-mail</p>{{feedback.eMail}}</li>
+                                        <li class="list-group-item"><p class="bold">Message</p>{{feedback.message}}</li>
+                                        <li class="list-group-item">
+                                            <p class="bold">Status</p>
+                                            <img @click="toggleCheck(feedback)" class="ctrlIcons" src="/images/check-box-empty.png">
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <p>
+                                    <button class="btn btn-link sideButtonsColor" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                                        #View Checked Feedbacks
+                                    </button>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="collapse" id="collapseExample">
+                            <div class="row justify-content-start" >
+                                <div class="col-md-6 col-12 my-3" v-for="feedback in feedbacks" v-if="feedback.checked==true">
+                                    <div class="card articleText" style="width: 100%;">
+                                        <ul class="list-group list-group-flush">
+                                            <li class="list-group-item"><p class="bold">Name</p>{{feedback.name}}</li>
+                                            <li class="list-group-item"><p class="bold">E-mail</p>{{feedback.eMail}}</li>
+                                            <li class="list-group-item"><p class="bold">Message</p>{{feedback.message}}</li>
+                                            <li class="list-group-item">
+                                                <p class="bold">Status </p>
+                                                <img @click="toggleCheck(feedback)" class="ctrlIcons" src="/images/checked.png">
+                                            </li>
+                                            <li class="list-group-item txtAlign bg-light" @click="deleteFeedback(feedback._id)">
+                                                <img class="ctrlIcons" src="/images/bin.png">
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!---------------------------------------------------------footer-------------------------------------------------------->
+    <footer class="text-muted pt-2" style="background-color: whitesmoke">
+        <div class="container-fluid mt">
+            <div class="row">
+
+                <!--copyright-->
+                <div class="col-md-3 col-12">
+                    <p>All rights reserved to Fatima Oday <br> © copyright 2018</p>
+                </div>
+
+                <!--external links-->
+                <div class="col-md-3 col">
+                    <a v-for="externalLink in externalLinks" :href="externalLink.link">
+                        <img class="footerExternalLinks" :src="externalLink.image">
+                    </a>
+                </div>
+
+                <!--Admin's Control Panel-->
+                <div class="col-md-3 col">
+                    <a href="/signIn" class="instructionFont">Admin's Control Panel</a>
+                </div>
+
+                <!--back to top-->
+                <div class="col-md-3 col">
+                    <p class="float-right instructionFont">
+                        <a href="#">Back to top</a>
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </footer>
+</div>
+<!--end of root divider-->
+
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+<!-- JQuery -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!-- Bootstrap tooltips -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.13.0/umd/popper.min.js"></script>
+<!-- MDB core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.0/js/mdb.min.js"></script>
+<script>
+    var app = new Vue({
+        el:"#root",
+        data:{
+            externalLinks:[
+                {image:"/images/facebook.png", link:"https://www.facebook.com/fatma.oday.1"},
+                {image:"/images/instagram.png", link:"https://www.instagram.com/fatma.oday/" },
+                {image:"/images/github.png", link:"https://github.com/fatimaoday"},
+                {image:"/images/house.png", link:"/home"}
+            ],
+            articles:[],
+            feedbacks:[],
+            travelling: 0,
+            technology: 0,
+            cooking: 0,
+            art: 0
+        },
+        methods:{
+            toggleCheck:function (feedback) {
+                feedback.checked = !feedback.checked;
+                axios.put('/infoApi', {feedback: feedback})
+            },
+            deleteFeedback:function (id) {
+                axios.delete('/infoApi', {params: {id: id}});
+                axios.get('/infoApi').then(function (response) {
+                    app.feedbacks = response.data;
+                });
+            },
+            showStatistics:function () {
+                //pie
+                var ctxP = document.getElementById("pieChart").getContext('2d');
+                var myPieChart = new Chart(ctxP, {
+                    type: 'pie',
+                    data: {
+                        labels: ["Travelling", "Technology", "Cooking", "Art"],
+                        datasets: [
+                            {
+                                data: [app.travelling, app.technology, app.cooking, app.art],
+                                backgroundColor: ["#F7464A", "#46BFBD", "#FDB45C", "#949FB1"],
+                                hoverBackgroundColor: ["#FF5A5E", "#5AD3D1", "#FFC870", "#A8B3C5"]
+                            }
+                        ]
+                    },
+                    options: {
+                        responsive: true
+                    }
+                });
+            }
+        },
+        mounted:function () {
+            axios.get('/api',{
+                params: {
+                    favourite: 0
+                }
+            }).then(function (response) {
+                app.articles = response.data;
+                for(i=0; i< app.articles.length; i++){
+                    if (app.articles[i].category == "travelling")
+                        app.travelling++;
+                    if (app.articles[i].category == "technology")
+                        app.technology++;
+                    if (app.articles[i].category == "cooking")
+                        app.cooking++;
+                    if (app.articles[i].category == "art")
+                        app.art++;
+                }
+            });
+            axios.get('/infoApi').then(function (response) {
+                app.feedbacks = response.data;
+
+            });
+        }
+    });
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,177 @@
+@import url('https://fonts.googleapis.com/css?family=Amatic+SC');
+@import url('https://fonts.googleapis.com/css?family=Poiret+One');
+@import url('https://fonts.googleapis.com/css?family=Pacifico');
+@import url('https://fonts.googleapis.com/css?family=Quattrocento+Sans');
+@import url('https://fonts.googleapis.com/css?family=Advent+Pro');
+
+.indexHeaderFont{
+    font-family: 'Amatic SC', cursive;
+    font-size: 100px;
+}
+.instructionFont{
+    font-family: 'Poiret One', cursive;
+    font-weight: bold;
+    font-size: large;
+}
+.indexBg {
+    background-image: url("/images/index.jpeg");
+    background-size: cover;
+}
+
+.indexLayerBg {
+    background-color: rgba(244,225,210,0.2);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.indexButton{
+    border-radius: 50px;
+}
+a:link {
+    color: #674d3c;
+}
+a:visited {
+    color: #674d3c;
+}
+a:hover {
+    color: #e0876a;
+}
+.mt {
+    margin-top: 20px;
+}
+.homeBackground{
+    background-color:  #f0efef;
+    background-image: url('http://media.tumblr.com/3d89aae17e699c1c8983154722f9a157/tumblr_inline_mjatubVxSH1qz4rgp.png');
+    background-attachment: fixed;
+}
+#topcorner {
+    position: fixed;
+    top: -411px;
+    left: -500px;
+    width: 630px;
+    height: 1300px;
+    background-color: #ccc;
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    background-image: url(http://media.tumblr.com/9f898ea82f4e950bce83a0c02acffb23/tumblr_inline_mjatukKz7t1qz4rgp.png);
+}
+.modalBg{
+    border-color: #e0876a;
+    border-style: solid;
+    background-color: #FFFFFF;
+    border-radius: 50px 5px;
+}
+.modalTextFont{
+    font-size: large;
+}
+.buttonBg{
+    border-radius: 50px 5px;
+    background-color: #e0876a ;
+    color: #FFFFFF;
+    border-color: white;
+}
+.buttonBgReverse{
+    border-radius: 5px 50px;
+    background-color: #e0876a ;
+    color: #FFFFFF;
+    border-color: white;
+}
+.btn-outline-dark:hover {
+    color: #e0876a;
+    background-color: white;
+    border-color: #f0efef ;
+}
+.headerImageCard{
+    border-radius: 5px 50px;
+    background-color: rgba(255, 252, 252, 0.3);
+    color: #e0876a;
+}
+.titleFont{
+    font-family: 'Pacifico', cursive;
+    color: #e0876a;
+}
+.qoutFont{
+    font-family: 'Advent Pro', sans-serif;
+    color: #674d3c;
+    font-size: 120%;
+}
+.linksBorder{
+    border-color: #e0876a;
+    border-left-style: solid;
+}
+.sideButtonsColor{
+    font-family: 'Poiret One', cursive;
+    font-weight: bold;
+    font-size: larger;
+    color: #674d3c;
+}
+.btn-link:hover {
+    color: #e0876a;
+    background-color: rgba(255, 252, 252, 0.5);
+}
+.menuIcons{
+    width: 25px;
+    height: 25px;
+}
+.dropdownBorder{
+    border-radius: 10px;
+}
+.txtAlign{
+    text-align: center;
+}
+.txtSize{
+    font-size: 60px;
+}
+.mainContentsBg{
+    border-radius: 50px 5px;
+    background-color: hsl(0, 100%, 99.5%)
+}
+.atricleTitle{
+    font-family: 'Poiret One', cursive;
+    font-size: 400%;
+    color: #674d3c;
+}
+.articleText{
+    font-family: 'Quattrocento Sans', sans-serif;
+    font-size: 20px;
+    color: #454140;
+}
+.ctrlIcons{
+    width: 20px;
+    height: 20px;
+}
+.addButton{
+    background-color:#F44336;
+    width:60px;
+    height:60px;
+    border-radius:100%;
+    background:#e0876a;
+    border:none;
+    outline:none;
+    color:#FFF;
+    font-size:36px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    transition:.3s;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+.addButton:focus {
+    transform:scale(1.1);
+    transform:rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+}
+.footerExternalLinks{
+    width: 40px;
+    height: 40px;
+}
+.bold{
+    font-weight: bold;
+}
+.qAndA{
+    font-family: 'Poiret One', cursive;
+    font-size: 250%;
+    color: #674d3c;
+}

@@ -1,0 +1,405 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <link rel="icon" href="\images\icon.png"/>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <title>Favourites</title>
+</head>
+
+<body class="homeBackground">
+<!--top corner div-->
+<div id="topcorner"></div>
+
+<!--root divider-->
+<div id="root">
+
+    <!------------------------------------------------------ addModal ------------------------------------------------------>
+    <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content modalBg">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Add New Article</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label class="modalTextFont">Article's Title</label>
+                        <input v-model="newArticle.title" type="text" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label class="modalTextFont">Article's Image Link</label>
+                        <input v-model="newArticle.image" type="text" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label class="modalTextFont">Article's content</label>
+                        <textarea v-model="newArticle.description" class="form-control" id="exampleFormControlTextarea1" rows="5"></textarea>
+                    </div>
+                    <label class="modalTextFont">Article's Category</label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" v-model="newArticle.category" value="travelling">
+                        <label class="form-check-label" for="exampleRadios1">Travelling</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" v-model="newArticle.category" value="art" >
+                        <label class="form-check-label" for="exampleRadios1">Art</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" v-model="newArticle.category" value="cooking" >
+                        <label class="form-check-label" for="exampleRadios1">Cooking</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" v-model="newArticle.category" value="technology" >
+                        <label class="form-check-label" for="exampleRadios1">Technology</label>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-dark buttonBgReverse" data-dismiss="modal">Close</button>
+                    <button @click="addArticle" type="button" class="btn btn-outline-dark buttonBg">Add</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!------------------------------------------------------ editModal ------------------------------------------------------>
+    <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content modalBg">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Edit This Article</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>Article's Title</label>
+                        <input v-model="editingArticle.title" type="text" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>Article's Image Link</label>
+                        <input v-model="editingArticle.image" type="text" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>Article's content</label>
+                        <textarea v-model="editingArticle.description" class="form-control" id="exampleFormControlTextarea1" rows="5"></textarea>
+                    </div>
+                    <label class="modalTextFont">Article's Category</label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" v-model="editingArticle.category" value="travelling">
+                        <label class="form-check-label" for="exampleRadios1">Travelling</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" v-model="editingArticle.category" value="art" >
+                        <label class="form-check-label" for="exampleRadios1">Art</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" v-model="editingArticle.category" value="cooking" >
+                        <label class="form-check-label" for="exampleRadios1">Cooking</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" v-model="editingArticle.category" value="technology" >
+                        <label class="form-check-label" for="exampleRadios1">Technology</label>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-dark buttonBgReverse" data-dismiss="modal">Close</button>
+                    <button @click="editArticle" type="button" class="btn btn-outline-dark buttonBg">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!------------------------------------------------------ container ------------------------------------------------------>
+    <div class="container mt">
+        <div class="row justify-content-around">
+
+            <!-----------------------side column----------------------->
+            <div class="col-md-4 mt">
+
+                <!--header's icon & title-->
+                <div class="card headerImageCard">
+                    <div class="card-body">
+                        <div class="row justify-content-center">
+                            <div class="col-md-7 col-7">
+                                <img class="w-100 mb-2" src="\images\icon.png" alt="main image">
+                            </div>
+                        </div>
+                        <div class="row justify-content-center">
+                            <div class="col-md-7 col-5">
+                                <h4 class="titleFont">Pinkish Vibes</h4>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!--page's qoute-->
+                <div class="row justify-content-center mt">
+                    <div class="col-md-10 col-7">
+                        <p class="qoutFont">"Find A Reason To Smile Everyday"</p>
+                    </div>
+                </div>
+
+                <!--pages links-->
+                <div class="row justify-content-center">
+                    <div class="col-md-9 col-6 linksBorder">
+                        <div class="row ">
+                            <div class="col-md-8 col-5">
+                                <a href="/home">
+                                    <button class="btn btn-link sideButtonsColor " >
+                                        <img class="menuIcons" src="\images\home.png" alt="">
+                                        Home
+                                    </button>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-8 col-5">
+                                <a href="/about" >
+                                    <button class="btn btn-link sideButtonsColor" >
+                                        <img class="menuIcons" src="\images\aboutMe.png" alt="">
+                                        About
+                                    </button>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="row ">
+                            <div class="col-md-9 col-6">
+                                <a href="/favourites">
+                                    <button class="btn btn-link sideButtonsColor" >
+                                        <img class="menuIcons" src="\images\favorite.png" alt="" >
+                                        Favourites
+                                    </button>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-9 col-6">
+                                <div class="dropdown">
+                                    <button class="btn btn-link dropdown-toggle sideButtonsColor" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <img class="menuIcons" src="\images\categories.png" id="dropdownMenuButton">
+                                        Categories
+                                    </button>
+                                    <div class="dropdown-menu dropdownBorder" aria-labelledby="dropdownMenuButton">
+                                        <a class="dropdown-item dropdownBorder" href="/travelling">Travelling</a>
+                                        <a class="dropdown-item dropdownBorder" href="/art">Art</a>
+                                        <a class="dropdown-item dropdownBorder" href="/cooking">Cooking</a>
+                                        <a class="dropdown-item dropdownBorder" href="/technology">Technology</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row ">
+                            <div class="col-md-9 col-6">
+                                <a href="/feedback">
+                                    <button class="btn btn-link sideButtonsColor" >
+                                        <img class="menuIcons" src="\images\feedback.png" alt="" >
+                                        Feedback
+                                    </button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            <!------------------main content of the page--------------->
+            <div class="col-md-8 col-12">
+                <br>
+                <h1 class="titleFont txtAlign txtSize">Favourite Articles</h1>
+                <div class="card mt mainContentsBg mb-3" v-for="article in articles">
+                    <div class="card-body">
+                        <img :src="article.image" class="w-100 mainContentsBg">
+                        <h1 class="atricleTitle">{{article.title}}</h1>
+                        <p class="articleText" style="white-space:pre-line">{{article.description}}</p>
+                        <div class="row">
+                            <div class="col-md-1 col-1">
+                                <img @click="toggleFavourite(article)" v-if="!article.favourite" class="ctrlIcons" src="\images\favorite.png" alt="love">
+                                <img @click="toggleFavourite(article)" v-if="article.favourite" class="ctrlIcons" src="\images\favoritefull.png" alt="love">
+                            </div>
+                            <div class="col-md-1 col-1">
+                                <img @click="openEditModal(article)" class="ctrlIcons" src="/images/edit.png" alt="edit">
+                            </div>
+                            <div class="col-md-1 col-1">
+                                <img @click="removeArticle(article._id)" class="ctrlIcons"  src="/images/bin.png" alt="delete">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <!-----------------------add button------------------------>
+            <div class="col-md-5 col-2 pb-3">
+                <button @click="openAddModal" class="addButton float-right">+</button>
+            </div>
+
+        </div>
+    </div>
+
+    <!---------------------------------------------------------footer-------------------------------------------------------->
+    <footer class="text-muted pt-2" style="background-color: whitesmoke">
+        <div class="container-fluid mt">
+            <div class="row">
+
+                <!--copyright-->
+                <div class="col-md-3 col-12 order-md-1 order-4">
+                    <p>All rights reserved to Fatima Oday <br> © copyright 2018</p>
+                </div>
+
+                <!--external links-->
+                <div class="col-md-3 col order-md-2 order-1">
+                    <a v-for="externalLink in externalLinks" :href="externalLink.link">
+                        <img class="footerExternalLinks" :src="externalLink.image">
+                    </a>
+                </div>
+
+                <!--Admin's Control Panel-->
+                <div class="col-md-3 col order-md-3 order-2">
+                    <a href="/adminsControlPanel" class="instructionFont">Admin's Control Panel</a>
+                </div>
+
+                <!--back to top-->
+                <div class="col-md-3 col order-md-4 order-3">
+                    <p class="float-right instructionFont">
+                        <a href="#">Back to top</a>
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </footer>
+</div>
+<!--end of root divider-->
+
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+    function getArticles() {
+        axios.get('/api',{
+            params: {
+                favourite: 1
+            }
+        }).then(function (response) {
+            app.articles = response.data;
+        });
+    }
+
+    var app = new Vue({
+        el:"#root",
+        data:{
+            articles:[],
+            newArticle: {
+                image: "",
+                title: "",
+                description: "",
+                favourite:false,
+                category:""
+            },
+            editingArticle: {
+                image: "",
+                title: "",
+                description: "",
+                favourite:false,
+                category:""
+            },
+            externalLinks:[
+                {image:"/images/facebook.png", link:"https://www.facebook.com/fatma.oday.1"},
+                {image:"/images/instagram.png", link:"https://www.instagram.com/fatma.oday/" },
+                {image:"/images/github.png", link:"https://github.com/fatimaoday"}
+            ]
+
+        },
+        methods:{
+            openAddModal:function () {
+                $('#addModal').modal('show')
+            },
+            openEditModal: function (article) {
+                this.editingArticle = article
+                $('#editModal').modal('show')
+
+            },
+            addArticle: function () {
+                axios.post('/api', {article: app.newArticle}).then(function (response) {
+
+                    if (response.data.isSuccess) {
+                        getArticles()
+                        $('#addModal').modal('hide')
+                        app.newArticle.image= ""
+                        app.newArticle.title= ""
+                        app.newArticle.description= ""
+                        app.newArticle.category=""
+                    }
+
+                }).catch(function (error) {
+                    console.log("Error")
+
+                })
+            },
+            editArticle: function () {
+                axios.put('/api', {article: this.editingArticle}).then(function (response) {
+                    if (response.data.isSuccess) {
+                        $('#editModal').modal('hide');
+                        getArticles();
+                    }
+                })
+            },
+            removeArticle:function (id) {
+                if (confirm("Are You Sure You Want To Delete This Article ?")) {
+                    axios.delete('/api', {
+                        params: {
+                            id: id
+                        }
+                    }).then(function (response) {
+                        if (response.data.isSuccess) {
+                            getArticles()
+                            alert('Article Is Removed :(');
+                        }
+                    });
+                }
+            },
+            toggleFavourite:function (article) {
+                article.favourite= !(article.favourite)
+                this.editingArticle = article
+                axios.put('/api', {article: this.editingArticle}).then(function (response) {
+                    if (response.data.isSuccess) {
+                        getArticles();
+                    }
+                })
+            }
+        },
+        mounted:function () {
+            getArticles()
+        }
+
+    })
+</script>
+</body>
+</html>

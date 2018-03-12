@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <link rel="icon" href="\images\icon.png"/>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <title>Contact Us</title>
+</head>
+
+<body class="homeBackground">
+<!--top corner div-->
+<div id="topcorner"></div>
+
+<!--root divider-->
+<div id="root">
+    <!------------------------------------------------------ container ------------------------------------------------------>
+    <div class="container mt">
+        <div class="row justify-content-around">
+
+            <!-----------------------side column----------------------->
+            <div class="col-md-4 mt">
+
+                <!--header's icon & title-->
+                <div class="card headerImageCard">
+                    <div class="card-body">
+                        <div class="row justify-content-center">
+                            <div class="col-md-7 col-7">
+                                <img class="w-100 mb-2" src="\images\icon.png" alt="main image">
+                            </div>
+                        </div>
+                        <div class="row justify-content-center">
+                            <div class="col-md-7 col-5">
+                                <h4 class="titleFont">Pinkish Vibes</h4>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!--page's qoute-->
+                <div class="row justify-content-center mt">
+                    <div class="col-md-10 col-7">
+                        <p class="qoutFont">"Find A Reason To Smile Everyday"</p>
+                    </div>
+                </div>
+
+                <!--pages links-->
+                <div class="row justify-content-center">
+                    <div class="col-md-9 col-6 linksBorder">
+                        <div class="row ">
+                            <div class="col-md-8 col-5">
+                                <a href="/home">
+                                    <button class="btn btn-link sideButtonsColor " >
+                                        <img class="menuIcons" src="\images\home.png" alt="">
+                                        Home
+                                    </button>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-8 col-5">
+                                <a href="/about" >
+                                    <button class="btn btn-link sideButtonsColor" >
+                                        <img class="menuIcons" src="\images\aboutMe.png" alt="">
+                                        About
+                                    </button>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="row ">
+                            <div class="col-md-9 col-6">
+                                <a href="/favourites">
+                                    <button class="btn btn-link sideButtonsColor" >
+                                        <img class="menuIcons" src="\images\favorite.png" alt="" >
+                                        Favourites
+                                    </button>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-9 col-6">
+                                <div class="dropdown">
+                                    <button class="btn btn-link dropdown-toggle sideButtonsColor" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <img class="menuIcons" src="\images\categories.png" id="dropdownMenuButton">
+                                        Categories
+                                    </button>
+                                    <div class="dropdown-menu dropdownBorder" aria-labelledby="dropdownMenuButton">
+                                        <a class="dropdown-item dropdownBorder" href="/travelling">Travelling</a>
+                                        <a class="dropdown-item dropdownBorder" href="/art">Art</a>
+                                        <a class="dropdown-item dropdownBorder" href="/cooking">Cooking</a>
+                                        <a class="dropdown-item dropdownBorder" href="/technology">Technology</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-8 col-5">
+                                <a href="/feedback" >
+                                    <button class="btn btn-link sideButtonsColor" >
+                                        <img class="menuIcons" src="\images\feedback.png" alt="">
+                                        Feedback
+                                    </button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            <!------------------main content of the page--------------->
+            <div class="col-md-8 col-12">
+                <div class="card mt mainContentsBg mb-3">
+                    <div class="card-body">
+                        <h1 class="atricleTitle">Tell Us What You Think</h1>
+                        <hr>
+                        <p class="articleText" style="white-space: pre-line">Help us to improve and always provide the best to you :)
+                            If you ever wished for new features to be in our blog or if you think some features should be modified or you just want to give your opinion in general
+                            Please let us know by sending us your feedback, we'll be very glad to hear it.
+                        </p>
+                        <div class="row">
+                            <div class="col-md-8 col-12">
+                                <div class="form-group">
+                                    <label class="articleText" for="exampleInputEmail1">Full name</label>
+                                    <input v-model="feedback.name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Your name here">
+                                </div>
+                                <div class="form-group">
+                                    <label class="articleText"  for="exampleInputEmail1">Email address</label>
+                                    <input v-model="feedback.eMail" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter your email address">
+                                    <small id="emailHelp" class="form-text text-muted">We need your email address so we can send you our response.</small>
+
+                                </div>
+                                <div class="form-group">
+                                    <label class="articleText"  for="exampleFormControlTextarea1">Your message</label>
+                                    <textarea v-model="feedback.message" class="form-control" id="exampleFormControlTextarea1" placeholder="Say what you think about this blog" rows="6"></textarea>
+                                </div>
+                                <button @click="sendFeedback" type="button" class="btn btn-outline-dark buttonBg float-right">Submit</button>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!---------------------------------------------------------footer-------------------------------------------------------->
+    <footer class="text-muted pt-2" style="background-color: whitesmoke">
+        <div class="container-fluid mt">
+            <div class="row">
+
+                <!--copyright-->
+                <div class="col-md-3 col-12">
+                    <p>All rights reserved to Fatima Oday <br> © copyright 2018</p>
+                </div>
+
+                <!--external links-->
+                <div class="col-md-3 col">
+                    <a v-for="externalLink in externalLinks" :href="externalLink.link">
+                        <img class="footerExternalLinks" :src="externalLink.image">
+                    </a>
+                </div>
+
+                <!--Admin's Control Panel-->
+                <div class="col-md-3 col">
+                    <a href="/adminsControlPanel" class="instructionFont">Admin's Control Panel</a>
+                </div>
+
+                <!--back to top-->
+                <div class="col-md-3 col">
+                    <p class="float-right instructionFont">
+                        <a href="#">Back to top</a>
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </footer>
+</div>
+<!--end of root divider-->
+
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+
+    var app = new Vue({
+        el:"#root",
+        data:{externalLinks:[
+                {image:"/images/facebook.png", link:"https://www.facebook.com/fatma.oday.1"},
+                {image:"/images/instagram.png", link:"https://www.instagram.com/fatma.oday/" },
+                {image:"/images/github.png", link:"https://github.com/fatimaoday"}
+                ],
+            feedback:{
+                name:"",
+                eMail:"",
+                message:"",
+                checked:false
+            }
+        },
+        methods:{
+            sendFeedback:function () {
+                if(app.feedback.name!="" && app.feedback.eMail!="" && app.feedback.message!=""){
+                    axios.post('/infoApi', {feedback: app.feedback}).then(function () {
+
+                        alert("Your message was sent successfully!");
+                        app.feedback.name=""
+                        app.feedback.eMail=""
+                        app.feedback.message=""
+
+                    }).catch(function (error) {
+                        console.log("Error")
+
+                    })
+                }
+                else{
+                    alert("Please Fill All The Required Inputs !!")
+                }
+            }
+        }
+
+    })
+</script>
+</body>
+</html>
