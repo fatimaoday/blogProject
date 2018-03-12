@@ -20,4 +20,10 @@ npm start
 wait until database is connected then [click here](http://localhost:3000) to start exploring the website.
 
 
+or you can just click on the link below and visit our blog
+
+
+https://pinkish-vibes.herokuapp.com/
+
+
 
