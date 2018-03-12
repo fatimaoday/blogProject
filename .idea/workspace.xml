@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4d2cd7a7-4347-431e-b64c-ceadba180de2" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/views/art.ejs" afterPath="$PROJECT_DIR$/views/art.ejs" />
-      <change beforePath="$PROJECT_DIR$/views/cooking.ejs" afterPath="$PROJECT_DIR$/views/cooking.ejs" />
-      <change beforePath="$PROJECT_DIR$/views/favourites.ejs" afterPath="$PROJECT_DIR$/views/favourites.ejs" />
-      <change beforePath="$PROJECT_DIR$/views/home.ejs" afterPath="$PROJECT_DIR$/views/home.ejs" />
-      <change beforePath="$PROJECT_DIR$/views/technology.ejs" afterPath="$PROJECT_DIR$/views/technology.ejs" />
-      <change beforePath="$PROJECT_DIR$/views/travelling.ejs" afterPath="$PROJECT_DIR$/views/travelling.ejs" />
-    </list>
+    <list default="true" id="4d2cd7a7-4347-431e-b64c-ceadba180de2" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -126,7 +119,7 @@
   <component name="NodeModulesDirectoryManager">
     <handled-path value="$PROJECT_DIR$/node_modules" />
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="605" />
     <option name="y" value="15" />
     <option name="width" value="645" />
@@ -203,16 +196,15 @@
       <updated>1520875104258</updated>
       <workItem from="1520875109255" duration="94000" />
       <workItem from="1520875402610" duration="912000" />
-      <workItem from="1520879756948" duration="1044000" />
+      <workItem from="1520879756948" duration="1359000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2050000" />
+    <option name="totallyTimeSpent" value="2365000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
