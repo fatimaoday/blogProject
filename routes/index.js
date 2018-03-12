@@ -96,7 +96,7 @@ router.get('/technology', function(req, res) {
     }
 });
 router.get('/adminsControlPanel', function(req, res) {
-    if (checkPssword.password == "codelab"){
+    if (checkPssword.password == password){
         res.render('adminsControlPanel');
     }
     else {
