@@ -25,5 +25,7 @@ or you can just click on the link below and visit our blog
 
 https://pinkish-vibes.herokuapp.com/
 
+Ps. Password: helloworld
+
 
 
